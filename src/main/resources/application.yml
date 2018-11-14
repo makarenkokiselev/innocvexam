@@ -1,0 +1,25 @@
+server: 
+  port: 8088
+  servlet:
+    context-path: /user-api
+
+spring:
+  datasource:
+    url: jdbc:postgresql://ec2-54-217-235-137.eu-west-1.compute.amazonaws.com:5432/d2do6ict28p0ka
+    username: tvtmtxhmkpungp
+    password: 88e4a3ff1ed094a6f082b575409fa1e434aff25fbedbbd2d63b152f745e55598
+    driver-class-name: org.postgresql.Driver
+  jackson: 
+    date-format: yyyy-MM-dd
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate: 
+        default_schema: public
+        temp: 
+          use_jdbc_metadata_defaults: false

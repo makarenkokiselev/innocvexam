@@ -1,5 +1,7 @@
 package com.pablo.innocvexam.controller.handler;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -24,6 +26,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 			return ResponseEntity
 					.status(HttpStatus.NO_CONTENT)
 					.body(ErrorMessage.builder().message(enfex.getMessage()).build());
+		} else if (ex instanceof ConstraintViolationException) {
+			ConstraintViolationException cvex = (ConstraintViolationException) ex;
+			return ResponseEntity
+					.badRequest()
+					.body(ErrorMessage.builder().message(cvex.getMessage()).build());
 		} else {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}

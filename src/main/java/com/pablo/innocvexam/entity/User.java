@@ -38,7 +38,6 @@ public class User {
 	private String name;
 	@NotNull
 	@Past
-	@DateConstraint
 	private Date birthDate;
 
 }
